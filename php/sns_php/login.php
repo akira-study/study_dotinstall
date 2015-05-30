@@ -24,7 +24,7 @@ if (!empty($_SESSION['me'])) {
 <h1>ログイン</h1>
 <form action="" method="POST">
     <p>メールアドレス：<input type="text" name="email" value=""></p>
-    <p>パスワード<input type="password" name="password" value=""></p>
-    <p><input type="submit" value="ログイン"><a href="signup.php">新規登録はこちら！</p>
+    <p>パスワード：<input type="password" name="password" value=""></p>
+    <p><input type="submit" value="ログイン"><a href="signup.php">新規登録はこちら！</a></p>
 </form>
 </body>
