@@ -15,4 +15,4 @@ define('PASSWORD_KEY', 'vagrant');
 error_reporting(E_ALL & ~E_NOTICE);
 
 // セッションによるログイン管理(このディレクトリでのみセッション有効)
-session_set_cookie_params(0, '/sns_php/');
+session_set_cookie_params(0, 'dotinstall/php/sns_php/'); // 詳しく調べる
