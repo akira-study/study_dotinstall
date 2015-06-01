@@ -5,31 +5,7 @@ require_once('functions.php');
 
 session_start();
 
-function setToken() {
-    // 乱数を生成してsha1で暗号化
-    $token = sha1(uniqid(mt_rand(), true));
-    $_SESSION['token'] = $token;
-}
-
-function checkToken() {
-    if (empty($_SESSION['token']) || ($_SESSION['token']) != $_POST['token']) {
-        echo "不正なPOSTが行われました！";
-        exit;
-    }
-}
-
-function emailExists($email, $dbh) {
-    $sql = "select * from users where email = :email limit 1";
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute(array(":email" => $email));
-    $user = $stmt->fetch();
-    return $user ? true : false;
-}
-
-function getSha1Password($s) {
-    return (sha1(PASSWORD_KEY.$s));
-}
-
+// ロジック
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // CSRF対策
     // フォームを表示した時にトークンをセット
@@ -76,14 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
                  values
                  (:name, :email, :password,  now(), now())";
         $stmt = $dbh->prepare($sql);
-        var_dump($stmt);
         $params = array(
              ":name" => $name,
              ":email" => $email,
              ":password" => getSha1Password($password)
          );
-         var_dump($params);
-         exit;
          $stmt->execute($params);
          header('Location: '.SITE_URL.'login.php');
     }
