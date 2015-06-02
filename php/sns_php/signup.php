@@ -3,15 +3,17 @@
 require_once('config.php');
 require_once('functions.php');
 
+// ログイン管理セッション
 session_start();
 
-// ロジック
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    // CSRF対策
-    // フォームを表示した時にトークンをセット
-    // フォームがポストされた時に
-    // そのトークンと上記のトークンが一致しているかどうかチェック
-    // 不正なポストを防ぐ
+    /* 
+    CSRF対策
+    フォームを表示した時にトークンをセット
+    フォームがポストされた時に
+    そのトークンと上記のトークンが一致しているかどうかチェック
+    不正なポストを防ぐ
+    */
     setToken();
 } else {
     checkToken();
@@ -47,18 +49,21 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 
     if (empty($err)) {
         // 登録処理
+        // SQL文発行
         $sql = "insert into users
                  (name, email, password, created, modified)
                  values
                  (:name, :email, :password,  now(), now())";
+        // プリペアドステートメント作成
         $stmt = $dbh->prepare($sql);
         $params = array(
              ":name" => $name,
              ":email" => $email,
              ":password" => getSha1Password($password)
-         );
-         $stmt->execute($params);
-         header('Location: '.SITE_URL.'login.php');
+        );
+        // クエリ実行
+        $stmt->execute($params);
+        header('Location: '.SITE_URL.'login.php');
     }
 }
 

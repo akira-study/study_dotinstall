@@ -30,9 +30,13 @@ function checkToken() {
 }
 
 function emailExists($email, $dbh) {
+    // SQL文発行
     $sql = "select * from users where email = :email limit 1";
+    // プリペアドステートメント実行
     $stmt = $dbh->prepare($sql);
+    // クエリ実行
     $stmt->execute(array(":email" => $email));
+    // 値取得
     $user = $stmt->fetch();
     return $user ? true : false;
 }

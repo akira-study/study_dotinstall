@@ -13,17 +13,20 @@ if (!empty($_SESSION['me'])) {
 }
 
 function getUser($email, $password, $dbh) {
+    // SQL文発行
     $sql = "select * from users where email = :email and password = :password limit 1";
+    // プリペアドステートメント作成
     $stmt = $dbh->prepare($sql);
+    // クエリ実行
     $stmt->execute(array(
         ":email" => $email,
         ":password" => getSha1Password($password)
     ));
+    // 値取得
     $user = $stmt->fetch();
     return $user ? $user : false;
 }
 
-// ロジック
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     // CSRF対策
     // フォームを表示した時にトークンをセット
@@ -66,7 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
         }    
 
     if (empty($err)) {
-    
+        // セッションハイジャック対策
+        session_regenerate_id(true);
+        $_SESSION['me'] = $me;
+        header('Location: '.SITE_URL);
+        exit;
     }
 }             
 
