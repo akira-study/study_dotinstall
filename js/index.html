@@ -8,20 +8,21 @@
     <script>
 
         /*
-            alert
-            confirm
-            prompt
+            関数: 複数の処理
+
+            function 関数名() {
+                処理
+                return 返り値
+            }
         */
-        //alert("hello");
-        // var answer = confirm("are you sure?");
-        // console.log(answer);
-        /*
-        if (confirm("本当に削除しますか？")) {
-            //削除処理
+    
+        function hello(name) {
+            return "hello " + name;
         }
-        */
-        var name = prompt("お名前は？", "名無しさん");
-        console.log(name);
+
+        var greet = hello("Tom");
+        console.log(greet);
+    
     </script>
 </body>
 </html>
