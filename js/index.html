@@ -7,21 +7,33 @@
 <body>
     <script>
         /*
-            文字列
-                表現方法    
-                特殊文字
-            演算子
-        */
-        var s;
-        s = "hello";
-        s = 'hel\'lo';
-        // \n 改行
-        // \t タブ
-        s = 'it\'s\n a pe\tn.';
+            条件分岐
+            if (条件) {
+                真
+            } else {
+                偽
+            }
+            比較演算子
+            > < 
+            >= <=
+            === ==
+            !== !=
 
-        s = "hello " + "world";
-        s = "5" + 5; // 55
-        console.log(s);
+            論理演算子
+            AMD &&
+            OR ||
+            NOT !
+            score > 60 && score < 80
+        */
+        var score = 50;
+        if (score > 60) {
+            console.log("ok!");
+        } else if (score > 40){
+            console.log("soso...");
+        } else {
+            console.log("ng!");
+        }
+    
     </script>
 </body>
 </html>
