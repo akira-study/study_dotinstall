@@ -8,24 +8,20 @@
     <script>
 
         /*
-            ループ処理
-            for 
-
-            break ループ処理を抜ける
-            continue ループ処理を1回スキップ
-
-            while (i < 10) {
-                console.log(i);
-                i++
-            }
+            alert
+            confirm
+            prompt
         */
-        
-        for (var i = 0; i < 10; i++) {
-            if (i === 5) {
-                continue;
-            }
-            console.log(i);
+        //alert("hello");
+        // var answer = confirm("are you sure?");
+        // console.log(answer);
+        /*
+        if (confirm("本当に削除しますか？")) {
+            //削除処理
         }
+        */
+        var name = prompt("お名前は？", "名無しさん");
+        console.log(name);
     </script>
 </body>
 </html>
