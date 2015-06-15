@@ -7,33 +7,34 @@
 <body>
     <script>
         /*
-            条件分岐
-            if (条件) {
-                真
-            } else {
-                偽
-            }
-            比較演算子
-            > < 
-            >= <=
-            === ==
-            !== !=
-
-            論理演算子
-            AMD &&
-            OR ||
-            NOT !
-            score > 60 && score < 80
+            真偽値
+                文字列: 空文字以外だったらtrue
+                数値: 0 か NaN 以外だったらtrue
+                true / false
+                object: null 以外だったらtrue
+                undefined, null -> false        
         */
-        var score = 50;
-        if (score > 60) {
-            console.log("ok!");
-        } else if (score > 40){
-            console.log("soso...");
-        } else {
-            console.log("ng!");
+        if (x) {
+            // 処理
+        } 
+
+        if (x !== '') {
+            // 処理
         }
-    
+
+        /*
+            三項演算子
+            var a, b, c;
+            if (条件) {
+                a = b;
+            } else {
+                a = c;
+            }
+            a = (条件) ? b : c;
+        */
+
+        var max, x, y;
+        max = (x > y) ? x : y;
     </script>
 </body>
 </html>
