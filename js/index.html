@@ -8,18 +8,22 @@
     <script>
 
         /*
-            即時関数
-            
-        (function hello(name) {
-            console.log("hello " + name);
-        })("Tom");
+            タイマー処理
+                setInterval
+                setTimeout
         */ 
-
-        (function() {
-            var x = 10,
-                y = 20;
-            console.log(x + y);
-        })();
+        
+        var i = 0;
+        function show() {
+            console.log(i++);
+            var tid = setTimeout(function() {
+                show();
+            }, 1000);
+            if (i > 3) {
+                clearTimeout(tid);
+            }
+        }
+        show();
     </script>
 </body>
 </html>
