@@ -8,27 +8,18 @@
     <script>
 
         /*
-            関数: 複数の処理
+            即時関数
+            
+        (function hello(name) {
+            console.log("hello " + name);
+        })("Tom");
+        */ 
 
-            function 関数名() {
-                処理
-                return 返り値
-            }
-         
-        function hello(name) {
-            var msg = "hello " + name; // ローカル変数
-            return msg;
-        }
-        */
-
-        var hello = function(name) { // 無名関数、匿名関数
-            var msg = "hello " + name; // ローカル変数
-            return msg;
-        };
-        var greet = hello("Tom");
-        console.log(greet);
-        // console.log(msg);
-    
+        (function() {
+            var x = 10,
+                y = 20;
+            console.log(x + y);
+        })();
     </script>
 </body>
 </html>
